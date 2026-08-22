@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PatioNest · Home 2 — Outdoor Living Reimagined</title>
+
+  <!-- Favicon — patio umbrella with chairs, brand terracotta -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <link rel="shortcut icon" href="assets/favicon.svg"/>
+
+  <!-- Tailwind CSS via CDN -->
+   <script src="tailwind.js"></script>
+
+
+  <!-- Custom Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            terracotta: '#C4724B',
+            olive: '#5B8C5A',
+            cream: '#FBF3EB',
+            stone: '#D9C5B2',
+            dusk: '#A65A3A',
+            sage: '#9BB87F',
+            sand: '#EADCCB',
+          },
+          fontFamily: {
+            'display': ['"Poppins"', 'system-ui', 'sans-serif'],
+            'body': ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float-slow': 'floatSlow 6s ease-in-out infinite',
+            'spin-slow': 'spinSlow 12s linear infinite',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'bounce-gentle': 'bounceGentle 2.5s ease-in-out infinite',
+          },
+          keyframes: {
+            floatSlow: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+            spinSlow: { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
+            slideUp: { '0%': { transform: 'translateY(40px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+            bounceGentle: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-6px)' } },
+          },
+          backgroundImage: {
+            'warm-pattern': 'radial-gradient(circle at 30% 40%, rgba(196, 114, 75, 0.08) 0%, transparent 70%)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <style>
+    body {
+      background-color: #FBF3EB;
+      color: #2E1F1A;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    .dark body {
+      background-color: #2E1F1A;
+      color: #FBF3EB;
+    }
+    .dark .text-\[\#2E1F1A\] { color: #FBF3EB; }
+
+    .dark nav {
+      background-color: rgba(46, 31, 26, 0.95) !important;
+      border-color: rgba(196, 114, 75, 0.2) !important;
+    }
+
+    body::-webkit-scrollbar { width: 6px; }
+    body::-webkit-scrollbar-track { background: #FBF3EB; border-radius: 10px; }
+    body::-webkit-scrollbar-thumb { background: #C4724B; border-radius: 10px; }
+
+    .card-outdoor {
+      background: white;
+      border-radius: 32px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(196, 114, 75, 0.15);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+    }
+    .dark .card-outdoor {
+      background: #3D2C25;
+      border-color: rgba(196, 114, 75, 0.25);
+    }
+    .card-outdoor:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 35px -10px rgba(196, 114, 75, 0.3);
+      border-color: #C4724B;
+    }
+
+    .btn-primary {
+      background-color: #C4724B;
+      color: #FBF3EB;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(196, 114, 75, 0.3);
+    }
+    .btn-primary:hover {
+      background-color: #A65A3A;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(196, 114, 75, 0.4);
+      color: white;
+    }
+    .btn-outline {
+      border: 1.5px solid #C4724B;
+      color: #C4724B;
+      background: transparent;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      background-color: #C4724B;
+      color: #FBF3EB;
+      transform: translateY(-2px);
+    }
+    .dark .btn-outline:hover {
+      background-color: #C4724B !important;
+      color: #FBF3EB !important;
+    }
+
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2.5px;
+      background-color: #C4724B;
+      transition: width 0.25s ease;
+      border-radius: 3px;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .dropdown-studio { position: relative; }
+    .dropdown-studio-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: white;
+      border-radius: 18px;
+      padding: 0.5rem 0;
+      box-shadow: 0 18px 32px rgba(0,0,0,0.08);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: all 0.25s ease;
+      z-index: 1000;
+      border: 1px solid rgba(196, 114, 75, 0.2);
+    }
+    .dark .dropdown-studio-menu { background: #3D2C25; border-color: rgba(196, 114, 75, 0.3); }
+    .dropdown-studio:hover .dropdown-studio-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      padding: 0.6rem 1.4rem;
+      transition: all 0.2s;
+      color: #2E1F1A;
+    }
+    .dark .dropdown-item { color: #FBF3EB; }
+    .dropdown-item:hover {
+      background-color: #FBF3EB;
+      color: #2E1F1A;
+      padding-left: 1.7rem;
+    }
+    .dropdown-item i { margin-right: 0.75rem; width: 20px; }
+
+    .mobile-menu-studio {
+      background: white;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 0 0 24px 24px;
+    }
+    .dark .mobile-menu-studio { background: #3D2C25; }
+    .mobile-menu-studio.open { max-height: 80vh; overflow-y: auto; }
+
+    .stat-badge {
+      background: white;
+      border-radius: 28px;
+      padding: 1rem 0.5rem;
+      border: 1px solid rgba(196, 114, 75, 0.2);
+      text-align: center;
+    }
+    .dark .stat-badge { background: #3D2C25; }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem;
+      border-left: 5px solid #C4724B;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+    }
+    .dark .testimonial-card { background: #3D2C25; }
+
+    .social-icon-studio {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FBF3EB;
+      color: #2E1F1A;
+      transition: all 0.3s;
+    }
+    .social-icon-studio:hover {
+      background-color: #C4724B;
+      color: #FBF3EB;
+      transform: translateY(-3px);
+    }
+    .dark .social-icon-studio { background-color: #3D2C25; color: #FBF3EB; }
+    .dark .social-icon-studio:hover { background-color: #C4724B; color: #FBF3EB; }
+
+    .avatar-circle {
+      background-color: #C4724B;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #FBF3EB;
+    }
+
+    [dir="rtl"] .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
+    [dir="rtl"] .border-l-4 { border-left-width: 0 !important; border-right-width: 4px !important; }
+    [dir="rtl"] .ms-1 { margin-left: 0 !important; margin-right: 0.25rem !important; }
+    html[dir="rtl"] .dropdown-studio-menu { left: auto; right: 0; }
+    [dir="rtl"] .dropdown-item i { margin-right: 0; margin-left: 0.75rem; }
+    [dir="rtl"] .dropdown-item:hover { padding-left: 1.4rem; padding-right: 1.7rem; }
+    [dir="rtl"] .testimonial-card { border-left: none; border-right: 5px solid #C4724B; }
+
+    .flavor-tag {
+      background: rgba(196, 114, 75, 0.15);
+      border-radius: 100px;
+      padding: 0.2rem 0.9rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: #2E1F1A;
+    }
+    .dark .flavor-tag { background: rgba(196, 114, 75, 0.2); color: #FBF3EB; }
+
+    /* Home2 specific */
+    .hero-2-badge {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .grid-card-2 {
+      transition: all 0.35s ease;
+      border: 1px solid rgba(196,114,75,0.1);
+    }
+    .grid-card-2:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 25px 40px -12px rgba(196,114,75,0.35);
+      border-color: #C4724B;
+    }
+    .feature-icon-2 {
+      background: rgba(196,114,75,0.12);
+      transition: all 0.3s;
+    }
+    .group:hover .feature-icon-2 {
+      background: #C4724B;
+      color: white;
+    }
+  </style>
+</head>
+<body class="warm-pattern">
+
+<!-- ======== NAVIGATION (exact copy from reference) ======== -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 dark:bg-[#2E1F1A]/95 backdrop-blur-md border-b border-cream/40 dark:border-cream/10 shadow-sm">
+  <div class="container mx-auto px-6">
+    <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
+      <!-- Logo -->
+      <a class='flex items-center gap-2 md:gap-3 group shrink-0' href='index.html'>
+        <div class="w-9 h-9 md:w-10 md:h-10 bg-terracotta rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition duration-300 overflow-hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" class="w-full h-full p-1.5" fill="none">
+            <rect x="8" y="19" width="20" height="5" rx="2.5" fill="white" opacity="0.95"/>
+            <rect x="10" y="11" width="16" height="9" rx="2" fill="white" opacity="0.85"/>
+            <rect x="9" y="24" width="3" height="7" rx="1.5" fill="white" opacity="0.9"/>
+            <rect x="24" y="24" width="3" height="7" rx="1.5" fill="white" opacity="0.9"/>
+            <path d="M6 28 Q4 22 7 17 Q9 13 8 9" stroke="white" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7"/>
+            <ellipse cx="7" cy="14" rx="2.5" ry="1.6" transform="rotate(-30 7 14)" fill="white" opacity="0.6"/>
+            <ellipse cx="5.5" cy="20" rx="2.2" ry="1.4" transform="rotate(20 5.5 20)" fill="white" opacity="0.55"/>
+            <path d="M30 28 Q32 22 29 17 Q27 13 28 9" stroke="white" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7"/>
+            <ellipse cx="29" cy="14" rx="2.5" ry="1.6" transform="rotate(30 29 14)" fill="white" opacity="0.6"/>
+            <ellipse cx="30.5" cy="20" rx="2.2" ry="1.4" transform="rotate(-20 30.5 20)" fill="white" opacity="0.55"/>
+          </svg>
+        </div>
+        <div>
+          <span class="text-lg md:text-2xl font-display font-bold tracking-tight"><span class="text-[#2E1F1A] dark:text-cream">Patio</span><span class="text-terracotta">Nest</span></span>
+        </div>
+      </a>
+
+      <!-- Desktop nav + actions -->
+      <div class="flex items-center gap-3 lg:gap-4 xl:gap-8 ml-auto rtl:ml-0 rtl:mr-auto">
+        <div class="hidden lg:flex items-center gap-3 xl:gap-6">
+          <div class="dropdown-studio">
+            <button class="nav-link text-terracotta font-medium transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
+              Home <i class="fas fa-chevron-down text-xs ms-1"></i>
+            </button>
+            <div class="dropdown-studio-menu">
+              <a class="dropdown-item" href="index.html"> Home 1</a>
+              <a class="dropdown-item text-terracotta font-medium" href="home2.html"> Home 2</a>
+            </div>
+          </div>
+          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="about.html">About</a>
+          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="products.html">Products</a>
+          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="materials.html">Materials</a>
+          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="gallery.html">Gallery</a>
+          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="custom.html">Custom &amp; Bulk</a>
+          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="services.html">Services</a>
+          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="contact.html">Contact</a>
+        </div>
+
+        <!-- Desktop actions -->
+        <div class="hidden lg:flex items-center gap-4 ms-2">
+          <div class="dropdown-studio">
+            <button class="w-10 h-10 rounded-full bg-terracotta/10 text-terracotta hover:bg-terracotta hover:text-cream transition flex items-center justify-center">
+              <i class="fas fa-user"></i>
+            </button>
+            <div class="dropdown-studio-menu" style="left: auto; right: 0;">
+              <a class="dropdown-item" href="login.html">Log in</a>
+              <a class="dropdown-item" href="signup.html">Sign Up</a>
+            </div>
+          </div>
+          <button id="theme-toggle" class="w-10 h-10 rounded-full bg-terracotta/20 dark:bg-terracotta/20 text-terracotta hover:scale-110 transition flex items-center justify-center">
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:inline"></i>
+          </button>
+          <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-terracotta/20 dark:bg-terracotta/20 text-terracotta hover:scale-110 transition flex items-center justify-center font-bold text-base">
+            ⇄
+          </button>
+        </div>
+
+        <!-- Mobile toggle -->
+        <button id="mobile-toggle" class="lg:hidden w-10 h-10 rounded-full bg-terracotta text-cream flex items-center justify-center shadow-md">
+          <i class="fas fa-bars text-base"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu-studio lg:hidden">
+      <div class="py-4 px-3 space-y-1">
+        <div class="py-1">
+          <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-terracotta border-l-4 border-terracotta bg-terracotta/5 rounded-xl transition cursor-pointer">
+            <span>Home</span>
+            <i id="home-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
+          </button>
+          <div id="home-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
+            <a class="block py-2.5 px-4 font-medium text-[#2E1F1A] dark:text-cream hover:bg-cream/60 dark:hover:bg-cream/10 rounded-xl transition" href="index.html">Home 1</a>
+            <a class="block py-2.5 px-4 font-medium text-terracotta bg-terracotta/5 border-l-4 border-terracotta rounded-xl transition" href="home2.html">Home 2</a>
+          </div>
+        </div>
+        <a class="block py-3 px-4 font-medium text-[#2E1F1A] dark:text-cream hover:bg-cream/60 dark:hover:bg-cream/10 rounded-xl transition" href="about.html">About</a>
+        <a class="block py-3 px-4 font-medium text-[#2E1F1A] dark:text-cream hover:bg-cream/60 dark:hover:bg-cream/10 rounded-xl transition" href="products.html">Products</a>
+        <a class="block py-3 px-4 font-medium text-[#2E1F1A] dark:text-cream hover:bg-cream/60 dark:hover:bg-cream/10 rounded-xl transition" href="materials.html">Materials</a>
+        <a class="block py-3 px-4 font-medium text-[#2E1F1A] dark:text-cream hover:bg-cream/60 dark:hover:bg-cream/10 rounded-xl transition" href="gallery.html">Gallery</a>
+        <a class="block py-3 px-4 font-medium text-[#2E1F1A] dark:text-cream hover:bg-cream/60 dark:hover:bg-cream/10 rounded-xl transition" href="custom.html">Custom &amp; Bulk</a>
+        <a class="block py-3 px-4 font-medium text-[#2E1F1A] dark:text-cream hover:bg-cream/60 dark:hover:bg-cream/10 rounded-xl transition" href="services.html">Services</a>
+        <a class="block py-3 px-4 font-medium text-[#2E1F1A] dark:text-cream hover:bg-cream/60 dark:hover:bg-cream/10 rounded-xl transition" href="contact.html">Contact</a>
+        <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-cream/60 dark:border-cream/10">
+          <a class="text-center py-2 rounded-full font-medium text-terracotta border border-terracotta" href="login.html">Log in</a>
+          <a class="text-center btn-primary py-2 rounded-full" href="signup.html">Sign Up Free</a>
+          <div class="flex gap-3">
+            <button id="mobile-theme-toggle" class="flex-1 py-2 rounded-full bg-terracotta/20 dark:bg-terracotta/20 text-terracotta text-sm font-medium flex items-center gap-2 justify-center">
+              <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i> Theme
+            </button>
+            <button id="mobile-rtl-toggle" class="flex-1 py-2 rounded-full bg-terracotta/20 dark:bg-terracotta/20 text-terracotta text-sm font-medium flex items-center gap-2 justify-center">
+              ⇄ RTL
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ======== HERO 2 — full-width with overlay & floating cards ======== -->
+<section class="min-h-screen flex items-center pt-32 pb-12 md:pt-40 md:pb-16 relative overflow-hidden bg-[#2E1F1A]">
+  <div class="absolute inset-0 z-0">
+    <img src="assets/h1.jpg" alt="Outdoor oasis" class="w-full h-full object-cover opacity-85">
+    <div class="absolute inset-0 bg-gradient-to-r from-[#2E1F1A]/95 via-[#2E1F1A]/60 to-[#2E1F1A]/30"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- left text -->
+      <div class="animate-slide-up">
+        <span class="inline-flex items-center gap-2 bg-[#2E1F1A]/95 text-cream px-5 py-2 rounded-full text-sm font-bold tracking-wide mb-4 border-2 border-terracotta shadow-2xl backdrop-blur-md">
+          <i class="fas fa-spa text-terracotta mr-2"></i> reimagine your outdoor
+        </span>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold mb-6 leading-tight text-cream drop-shadow-[0_5px_15px_rgba(0,0,0,0.95)]">
+          Where <span class="text-terracotta drop-shadow-[0_3px_10px_rgba(0,0,0,0.8)]">Nature</span><br />
+          Meets Design
+        </h1>
+        <p class="text-lg md:text-xl text-cream font-medium mb-8 max-w-lg drop-shadow-[0_3px_10px_rgba(0,0,0,0.95)] leading-relaxed">
+          Contemporary patio furniture, curated for those who seek elegance under the sky.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="products.html" class="btn-primary px-8 py-3 rounded-full inline-flex items-center gap-2 text-base shadow-xl">
+            <i class="fas fa-seedling"></i> Discover Now
+          </a>
+          <a href="custom.html" class="border border-cream/30 text-cream hover:bg-cream/10 px-8 py-3 rounded-full inline-flex items-center gap-2 text-base backdrop-blur-sm transition">
+            <i class="fas fa-compass"></i> Explore
+          </a>
+        </div>
+      </div>
+      <!-- right floating cards -->
+      <div class="grid grid-cols-2 gap-5 md:gap-6">
+        <div class="card-outdoor p-6 bg-[#2E1F1A]/90 backdrop-blur-md border-2 border-terracotta/40 text-cream hover:bg-[#2E1F1A] hover:border-terracotta hover:-translate-y-1 transition duration-300 shadow-2xl rounded-2xl">
+          <i class="fas fa-leaf text-terracotta text-3xl mb-3 drop-shadow-md"></i>
+          <h4 class="font-bold text-lg text-cream">Eco Teak</h4>
+          <p class="text-sm text-cream/90 font-medium">Sustainably sourced</p>
+        </div>
+        <div class="card-outdoor p-6 bg-[#2E1F1A]/90 backdrop-blur-md border-2 border-terracotta/40 text-cream hover:bg-[#2E1F1A] hover:border-terracotta hover:-translate-y-1 transition duration-300 shadow-2xl rounded-2xl">
+          <i class="fas fa-sun text-terracotta text-3xl mb-3 drop-shadow-md"></i>
+          <h4 class="font-bold text-lg text-cream">Weatherproof</h4>
+          <p class="text-sm text-cream/90 font-medium">All-season durability</p>
+        </div>
+        <div class="card-outdoor p-6 bg-[#2E1F1A]/90 backdrop-blur-md border-2 border-terracotta/40 text-cream hover:bg-[#2E1F1A] hover:border-terracotta hover:-translate-y-1 transition duration-300 shadow-2xl rounded-2xl">
+          <i class="fas fa-paint-roller text-terracotta text-3xl mb-3 drop-shadow-md"></i>
+          <h4 class="font-bold text-lg text-cream">Custom Finish</h4>
+          <p class="text-sm text-cream/90 font-medium">30+ colors</p>
+        </div>
+        <div class="card-outdoor p-6 bg-[#2E1F1A]/90 backdrop-blur-md border-2 border-terracotta/40 text-cream hover:bg-[#2E1F1A] hover:border-terracotta hover:-translate-y-1 transition duration-300 shadow-2xl rounded-2xl">
+          <i class="fas fa-truck-fast text-terracotta text-3xl mb-3 drop-shadow-md"></i>
+          <h4 class="font-bold text-lg text-cream">Fast Delivery</h4>
+          <p class="text-sm text-cream/90 font-medium">Nationwide</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FEATURES GRID 2 ======== -->
+<section class="py-20 bg-cream/40 dark:bg-[#2E1F1A]">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-14">
+      <span class="inline-block bg-terracotta/20 text-terracotta px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide">✦ curated with care</span>
+      <h2 class="text-4xl md:text-5xl font-display font-bold mt-4 text-[#2E1F1A] dark:text-cream">
+        Designed for <span class="text-terracotta">Life Outside</span>
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="group grid-card-2 bg-white dark:bg-[#3D2C25] rounded-3xl p-8 text-center">
+        <div class="feature-icon-2 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 text-terracotta text-2xl">
+          <i class="fas fa-tree"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#2E1F1A] dark:text-cream mb-2">Natural Materials</h3>
+        <p class="text-[#2E1F1A]/70 dark:text-cream/70 text-sm">Teak, rattan, and recycled aluminum — beautiful and responsible.</p>
+      </div>
+      <div class="group grid-card-2 bg-white dark:bg-[#3D2C25] rounded-3xl p-8 text-center">
+        <div class="feature-icon-2 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 text-terracotta text-2xl">
+          <i class="fas fa-hand-sparkles"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#2E1F1A] dark:text-cream mb-2">Artisan Craft</h3>
+        <p class="text-[#2E1F1A]/70 dark:text-cream/70 text-sm">Hand-finished details that make each piece one of a kind.</p>
+      </div>
+      <div class="group grid-card-2 bg-white dark:bg-[#3D2C25] rounded-3xl p-8 text-center">
+        <div class="feature-icon-2 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 text-terracotta text-2xl">
+          <i class="fas fa-shield-halved"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#2E1F1A] dark:text-cream mb-2">5-Year Warranty</h3>
+        <p class="text-[#2E1F1A]/70 dark:text-cream/70 text-sm">Peace of mind with our comprehensive structural guarantee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== CURATED PATIO SUITES LOOKBOOK ======== -->
+<section class="py-24 bg-[#F7F1EB] dark:bg-[#1F1510] relative overflow-hidden">
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+      <div>
+        <span class="inline-flex items-center gap-2 bg-terracotta/15 text-terracotta px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-3">
+          <i class="fas fa-compass"></i> Design Inspiration
+        </span>
+        <h2 class="text-4xl md:text-5xl font-display font-extrabold text-[#2E1F1A] dark:text-cream leading-tight">
+          Curated Patio <span class="text-terracotta">Suites</span>
+        </h2>
+        <p class="text-[#2E1F1A]/60 dark:text-cream/60 mt-3 text-base max-w-md">Explore complete architectural outdoor concepts styled by our lead designers.</p>
+      </div>
+      <a href="gallery.html" class="shrink-0 inline-flex items-center gap-2 border border-terracotta text-terracotta hover:bg-terracotta hover:text-white px-6 py-2.5 rounded-full text-sm font-semibold transition duration-300">
+        View Full Lookbook <i class="fas fa-arrow-right text-xs"></i>
+      </a>
+    </div>
+
+    <!-- 3 Lifestyle Suites Grid -->
+    <div class="grid lg:grid-cols-3 gap-8">
+
+      <!-- Suite 1 -->
+      <div class="group bg-white dark:bg-[#2E1F1A] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 flex flex-col border border-terracotta/10">
+        <div class="relative h-72 overflow-hidden">
+          <img src="assets/su.jpg" alt="Mediterranean Terrace" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+          <span class="absolute top-4 left-4 bg-[#2E1F1A]/80 backdrop-blur-md text-cream text-xs font-bold px-3 py-1.5 rounded-full">Suite 01 · Dining</span>
+        </div>
+        <div class="p-8 flex flex-col flex-1">
+          <h3 class="text-2xl font-display font-bold text-[#2E1F1A] dark:text-cream mb-2">The Mediterranean Terrace</h3>
+          <p class="text-[#2E1F1A]/65 dark:text-cream/65 text-sm mb-6 flex-1">Warm teak dining, forged iron accents &amp; sun-dappled shade built for long alfresco evenings.</p>
+          <div class="space-y-2 mb-6 pt-4 border-t border-[#2E1F1A]/10 dark:border-cream/10">
+            <div class="flex items-center justify-between text-xs text-[#2E1F1A]/80 dark:text-cream/80"><span class="font-medium">Includes:</span><span>6-Seat Teak Table + Woven Armchairs</span></div>
+            <div class="flex items-center justify-between text-xs text-[#2E1F1A]/80 dark:text-cream/80"><span class="font-medium">Vibe:</span><span class="text-terracotta font-semibold">Earthy &amp; Timeless</span></div>
+          </div>
+          <a href="products.html" class="w-full text-center bg-terracotta/10 hover:bg-terracotta text-terracotta hover:text-white font-bold text-sm py-3 rounded-2xl transition duration-300 flex items-center justify-center gap-2">
+            Explore Suite <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Suite 2 -->
+      <div class="group bg-white dark:bg-[#2E1F1A] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 flex flex-col border border-terracotta/10">
+        <div class="relative h-72 overflow-hidden">
+          <img src="assets/su1.jpg" alt="Coastal Resort Nook" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+          <span class="absolute top-4 left-4 bg-terracotta text-white text-xs font-bold px-3 py-1.5 rounded-full">Suite 02 · Lounge</span>
+        </div>
+        <div class="p-8 flex flex-col flex-1">
+          <h3 class="text-2xl font-display font-bold text-[#2E1F1A] dark:text-cream mb-2">Coastal Resort Nook</h3>
+          <p class="text-[#2E1F1A]/65 dark:text-cream/65 text-sm mb-6 flex-1">Weathered teak loungers, organic cotton hammocks &amp; light linen tones for poolside rest.</p>
+          <div class="space-y-2 mb-6 pt-4 border-t border-[#2E1F1A]/10 dark:border-cream/10">
+            <div class="flex items-center justify-between text-xs text-[#2E1F1A]/80 dark:text-cream/80"><span class="font-medium">Includes:</span><span>Double Hammock + Reclining Loungers</span></div>
+            <div class="flex items-center justify-between text-xs text-[#2E1F1A]/80 dark:text-cream/80"><span class="font-medium">Vibe:</span><span class="text-terracotta font-semibold">Serene &amp; Breezy</span></div>
+          </div>
+          <a href="products.html" class="w-full text-center bg-terracotta/10 hover:bg-terracotta text-terracotta hover:text-white font-bold text-sm py-3 rounded-2xl transition duration-300 flex items-center justify-center gap-2">
+            Explore Suite <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Suite 3 -->
+      <div class="group bg-white dark:bg-[#2E1F1A] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 flex flex-col border border-terracotta/10">
+        <div class="relative h-72 overflow-hidden">
+          <img src="assets/su2.jpg" alt="Modern Minimalist Deck" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+          <span class="absolute top-4 left-4 bg-[#2E1F1A]/80 backdrop-blur-md text-cream text-xs font-bold px-3 py-1.5 rounded-full">Suite 03 · Nightscape</span>
+        </div>
+        <div class="p-8 flex flex-col flex-1">
+          <h3 class="text-2xl font-display font-bold text-[#2E1F1A] dark:text-cream mb-2">The Urban Nightscape</h3>
+          <p class="text-[#2E1F1A]/65 dark:text-cream/65 text-sm mb-6 flex-1">Powder-coated aluminum frames, warm ambient fire pits &amp; architectural solar lanterns.</p>
+          <div class="space-y-2 mb-6 pt-4 border-t border-[#2E1F1A]/10 dark:border-cream/10">
+            <div class="flex items-center justify-between text-xs text-[#2E1F1A]/80 dark:text-cream/80"><span class="font-medium">Includes:</span><span>Fire Pit Lounge + Solar Lantern Array</span></div>
+            <div class="flex items-center justify-between text-xs text-[#2E1F1A]/80 dark:text-cream/80"><span class="font-medium">Vibe:</span><span class="text-terracotta font-semibold">Chic &amp; Ambient</span></div>
+          </div>
+          <a href="products.html" class="w-full text-center bg-terracotta/10 hover:bg-terracotta text-terracotta hover:text-white font-bold text-sm py-3 rounded-2xl transition duration-300 flex items-center justify-center gap-2">
+            Explore Suite <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== INTERACTIVE SHOP THE SPACE VISUALIZER ======== -->
+<section class="py-24 bg-cream/60 dark:bg-[#2E1F1A] border-t border-terracotta/10 relative">
+  <div class="container mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="inline-flex items-center gap-2 bg-terracotta/15 text-terracotta px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-3">
+        <i class="fas fa-crosshairs"></i> Interactive Experience
+      </span>
+      <h2 class="text-4xl md:text-5xl font-display font-extrabold text-[#2E1F1A] dark:text-cream leading-tight">
+        Shop The <span class="text-terracotta">Space</span>
+      </h2>
+      <p class="text-[#2E1F1A]/60 dark:text-cream/60 mt-3 text-base">Hover over the glowing pins on the patio setup to explore individual pieces in detail.</p>
+    </div>
+
+    <!-- Visual Container -->
+    <div class="grid lg:grid-cols-12 gap-8 items-center">
+      
+      <!-- Interactive Main Scene (8 cols) -->
+      <div class="lg:col-span-8 relative rounded-3xl overflow-hidden shadow-2xl group border-4 border-white dark:border-[#3A2820]">
+        <img src="assets/h5.jpg" alt="Interactive Patio Space" class="w-full h-auto aspect-[16/10] object-cover rounded-2xl transition duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+
+        <!-- Hotspot Pin 1: Veranda Teak Armchair -->
+        <div class="absolute top-[60%] left-[18%] group/pin cursor-pointer z-20">
+          <div class="relative flex items-center justify-center">
+            <span class="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-terracotta opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-7 w-7 bg-terracotta text-white items-center justify-center font-bold text-sm shadow-lg border-2 border-white"><i class="fas fa-plus text-xs"></i></span>
+          </div>
+          <!-- Tooltip Card -->
+          <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 group-hover/pin:opacity-100 transition-all duration-300 pointer-events-none group-hover/pin:pointer-events-auto z-30 w-52 sm:w-60">
+            <div class="bg-white dark:bg-[#3A2820] p-3 sm:p-4 rounded-2xl shadow-2xl border border-terracotta/20 flex items-center gap-3">
+              <div class="flex-1">
+                <h4 class="font-bold text-xs sm:text-sm text-[#2E1F1A] dark:text-cream">Veranda Teak Armchair</h4>
+                <span class="text-terracotta font-bold text-xs sm:text-sm">$189.00</span>
+              </div>
+              <a href="products.html" class="w-7 h-7 rounded-full bg-terracotta text-white flex items-center justify-center text-xs hover:bg-[#A65A3A] transition shadow">
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotspot Pin 2: Alfresco 6-Seat Table -->
+        <div class="absolute top-[48%] left-[50%] group/pin cursor-pointer z-20">
+          <div class="relative flex items-center justify-center">
+            <span class="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-terracotta opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-7 w-7 bg-terracotta text-white items-center justify-center font-bold text-sm shadow-lg border-2 border-white"><i class="fas fa-plus text-xs"></i></span>
+          </div>
+          <!-- Tooltip Card -->
+          <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 group-hover/pin:opacity-100 transition-all duration-300 pointer-events-none group-hover/pin:pointer-events-auto z-30 w-52 sm:w-60">
+            <div class="bg-white dark:bg-[#3A2820] p-3 sm:p-4 rounded-2xl shadow-2xl border border-terracotta/20 flex items-center gap-3">
+              <div class="flex-1">
+                <h4 class="font-bold text-xs sm:text-sm text-[#2E1F1A] dark:text-cream">Alfresco 6-Seat Table</h4>
+                <span class="text-terracotta font-bold text-xs sm:text-sm">$449.00</span>
+              </div>
+              <a href="products.html" class="w-7 h-7 rounded-full bg-terracotta text-white flex items-center justify-center text-xs hover:bg-[#A65A3A] transition shadow">
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotspot Pin 3: Solar Pathway Lantern -->
+        <div class="absolute top-[65%] left-[82%] group/pin cursor-pointer z-20">
+          <div class="relative flex items-center justify-center">
+            <span class="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-terracotta opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-7 w-7 bg-terracotta text-white items-center justify-center font-bold text-sm shadow-lg border-2 border-white"><i class="fas fa-plus text-xs"></i></span>
+          </div>
+          <!-- Tooltip Card -->
+          <div class="absolute bottom-full right-0 sm:left-1/2 sm:-translate-x-1/2 mb-3 opacity-0 group-hover/pin:opacity-100 transition-all duration-300 pointer-events-none group-hover/pin:pointer-events-auto z-30 w-52 sm:w-60">
+            <div class="bg-white dark:bg-[#3A2820] p-3 sm:p-4 rounded-2xl shadow-2xl border border-terracotta/20 flex items-center gap-3">
+              <div class="flex-1">
+                <h4 class="font-bold text-xs sm:text-sm text-[#2E1F1A] dark:text-cream">Solar Pathway Lantern</h4>
+                <span class="text-terracotta font-bold text-xs sm:text-sm">$59.00</span>
+              </div>
+              <a href="products.html" class="w-7 h-7 rounded-full bg-terracotta text-white flex items-center justify-center text-xs hover:bg-[#A65A3A] transition shadow">
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item Breakdown List (4 cols) -->
+      <div class="lg:col-span-4 space-y-4">
+        <h3 class="text-xl font-bold text-[#2E1F1A] dark:text-cream mb-4 flex items-center gap-2">
+          Featured in this scene:
+        </h3>
+
+        <!-- Item 1 -->
+        <div class="bg-white dark:bg-[#3A2820] p-4 rounded-2xl shadow-md border border-terracotta/10 flex items-center gap-4 hover:border-terracotta transition">
+          <div class="flex-1">
+            <h4 class="font-bold text-sm text-[#2E1F1A] dark:text-cream">Veranda Teak Armchair</h4>
+            <span class="text-terracotta font-bold text-sm">$189.00</span>
+          </div>
+          <a href="products.html" class="w-8 h-8 rounded-full bg-terracotta/10 text-terracotta hover:bg-terracotta hover:text-white transition flex items-center justify-center">
+            <i class="fas fa-plus text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="bg-white dark:bg-[#3A2820] p-4 rounded-2xl shadow-md border border-terracotta/10 flex items-center gap-4 hover:border-terracotta transition">
+          <div class="flex-1">
+            <h4 class="font-bold text-sm text-[#2E1F1A] dark:text-cream">Alfresco 6-Seat Table</h4>
+            <span class="text-terracotta font-bold text-sm">$449.00</span>
+          </div>
+          <a href="products.html" class="w-8 h-8 rounded-full bg-terracotta/10 text-terracotta hover:bg-terracotta hover:text-white transition flex items-center justify-center">
+            <i class="fas fa-plus text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="bg-white dark:bg-[#3A2820] p-4 rounded-2xl shadow-md border border-terracotta/10 flex items-center gap-4 hover:border-terracotta transition">
+          <div class="flex-1">
+            <h4 class="font-bold text-sm text-[#2E1F1A] dark:text-cream">Solar Pathway Lantern</h4>
+            <span class="text-terracotta font-bold text-sm">$59.00</span>
+          </div>
+          <a href="products.html" class="w-8 h-8 rounded-full bg-terracotta/10 text-terracotta hover:bg-terracotta hover:text-white transition flex items-center justify-center">
+            <i class="fas fa-plus text-xs"></i>
+          </a>
+        </div>
+
+        <a href="products.html" class="block w-full text-center bg-terracotta text-white font-bold text-sm py-3.5 rounded-2xl shadow-lg hover:bg-[#A65A3A] transition mt-6">
+          <i class="fas fa-bag-shopping mr-2"></i> Shop Whole Room Set ($697)
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== QUOTE / TESTIMONIAL STRIP ======== -->
+<section class="py-16 bg-terracotta/10 dark:bg-[#2E1F1A] border-y border-terracotta/20 dark:border-cream/10">
+  <div class="container mx-auto px-6 text-center">
+    <blockquote class="text-2xl md:text-3xl font-display italic text-[#2E1F1A] dark:text-cream max-w-3xl mx-auto">
+      “PatioNest transformed our backyard into a sanctuary. The quality and style are unmatched.”
+    </blockquote>
+    <cite class="block mt-4 text-terracotta font-semibold">— Elena &amp; Marco, homeowners</cite>
+  </div>
+</section>
+
+<!-- ======== CTA : SHOWROOM & CONSULTATION ======== -->
+<section class="py-20 bg-cream dark:bg-[#1F1510]">
+  <div class="container mx-auto px-6">
+    <div class="bg-terracotta/5 dark:bg-terracotta/10 rounded-3xl p-10 md:p-16 text-center border border-terracotta/20 dark:border-cream/10">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-[#2E1F1A] dark:text-cream mb-4">
+        Visit Our <span class="text-terracotta">Showroom</span>
+      </h2>
+      <p class="text-[#2E1F1A]/70 dark:text-cream/70 max-w-xl mx-auto mb-8">
+        Experience the collections in person. Book a private tour or design consultation.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="contact.html" class="btn-primary px-10 py-3.5 rounded-full font-bold inline-flex items-center gap-2"><i class="fas fa-calendar-check"></i> Book Visit</a>
+        <a href="contact.html" class="btn-outline px-10 py-3.5 rounded-full font-semibold inline-flex items-center gap-2">Showroom Hours</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER (exact copy from reference) ======== -->
+<footer class="bg-cream dark:bg-[#2E1F1A] text-[#2E1F1A] dark:text-cream pt-16 pb-8 border-t-4 border-terracotta transition-colors duration-300">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="text-center md:text-start">
+        <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
+          <div class="w-9 h-9 md:w-10 md:h-10 bg-terracotta rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" class="w-full h-full p-1.5" fill="none">
+              <rect x="8" y="19" width="20" height="5" rx="2.5" fill="white" opacity="0.95"/>
+              <rect x="10" y="11" width="16" height="9" rx="2" fill="white" opacity="0.85"/>
+              <rect x="9" y="24" width="3" height="7" rx="1.5" fill="white" opacity="0.9"/>
+              <rect x="24" y="24" width="3" height="7" rx="1.5" fill="white" opacity="0.9"/>
+              <path d="M6 28 Q4 22 7 17 Q9 13 8 9" stroke="white" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7"/>
+              <ellipse cx="7" cy="14" rx="2.5" ry="1.6" transform="rotate(-30 7 14)" fill="white" opacity="0.6"/>
+              <ellipse cx="5.5" cy="20" rx="2.2" ry="1.4" transform="rotate(20 5.5 20)" fill="white" opacity="0.55"/>
+              <path d="M30 28 Q32 22 29 17 Q27 13 28 9" stroke="white" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7"/>
+              <ellipse cx="29" cy="14" rx="2.5" ry="1.6" transform="rotate(30 29 14)" fill="white" opacity="0.6"/>
+              <ellipse cx="30.5" cy="20" rx="2.2" ry="1.4" transform="rotate(-20 30.5 20)" fill="white" opacity="0.55"/>
+            </svg>
+          </div>
+          <span class="text-lg md:text-2xl font-display font-bold tracking-tight"><span class="text-[#2E1F1A] dark:text-cream">Patio</span><span class="text-terracotta">Nest</span></span>
+        </div>
+        <p class="mb-5 text-[#2E1F1A] dark:text-cream text-sm">Timeless outdoor furniture &amp; patio decor. Crafted for comfort.</p>
+        <div class="flex justify-center md:justify-start gap-3">
+          <a href="#" class="social-icon-studio"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon-studio"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-icon-studio"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="text-center md:text-start">
+        <h4 class="text-[#2E1F1A] dark:text-terracotta font-bold text-lg mb-5 uppercase tracking-wider">Explore</h4>
+        <ul class="space-y-2">
+          <li><a href="products.html" class="hover:text-terracotta transition block text-[#2E1F1A] dark:text-cream">Products</a></li>
+          <li><a href="materials.html" class="hover:text-terracotta transition block text-[#2E1F1A] dark:text-cream">Materials</a></li>
+          <li><a href="custom.html" class="hover:text-terracotta transition block text-[#2E1F1A] dark:text-cream">Custom &amp; Bulk</a></li>
+          <li><a href="gallery.html" class="hover:text-terracotta transition block text-[#2E1F1A] dark:text-cream">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="text-center md:text-start">
+        <h4 class="text-[#2E1F1A] dark:text-terracotta font-bold text-lg mb-5 uppercase tracking-wider">Community</h4>
+        <ul class="space-y-2">
+          <li><a href="about.html" class="hover:text-terracotta transition block text-[#2E1F1A] dark:text-cream">About</a></li>
+          <li><a href="contact.html" class="hover:text-terracotta transition block text-[#2E1F1A] dark:text-cream">Contact</a></li>
+          <li><a href="#" class="hover:text-terracotta transition block text-[#2E1F1A] dark:text-cream">Careers</a></li>
+        </ul>
+      </div>
+      <div class="text-center md:text-start">
+        <h4 class="text-[#2E1F1A] dark:text-terracotta font-bold text-lg mb-5 uppercase tracking-wider">Showroom</h4>
+        <ul class="space-y-3">
+          <li class="flex justify-center md:justify-start gap-3 text-[#2E1F1A] dark:text-cream"><i class="fas fa-map-marker-alt text-terracotta mt-1"></i><span>78 Garden Blvd, Outdoor District</span></li>
+          <li class="flex justify-center md:justify-start gap-3 text-[#2E1F1A] dark:text-cream"><i class="fas fa-phone text-terracotta"></i><span>(555) 742-OASIS</span></li>
+          <li class="flex justify-center md:justify-start gap-3 text-[#2E1F1A] dark:text-cream"><i class="fas fa-envelope text-terracotta"></i><span>hello@pationest.com</span></li>
+          <li class="flex justify-center md:justify-start gap-3 text-[#2E1F1A] dark:text-cream text-sm"><i class="fas fa-clock text-terracotta"></i><span>Mon–Sat 10am – 7pm</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-8 border-t border-cream/60 dark:border-cream/10 text-center text-sm text-[#2E1F1A] dark:text-cream">
+      <p>&copy; 2026 PatioNest · Outdoor Furniture &amp; Patio. <i class="fas fa-heart text-terracotta mx-1"></i> Live beautifully outside.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ======== SCRIPTS (same as reference) ======== -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Theme toggle
+    const themeBtns = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle');
+    themeBtns.forEach(btn => {
+      btn?.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      });
+    });
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+
+    // RTL
+    function setRTL(isRTL) {
+      const html = document.documentElement;
+      if (isRTL === 'rtl' || isRTL === true) { html.setAttribute('dir', 'rtl'); localStorage.setItem('dir', 'rtl'); } 
+      else { html.setAttribute('dir', 'ltr'); localStorage.setItem('dir', 'ltr'); }
+    }
+    const savedDir = localStorage.getItem('dir');
+    if (savedDir === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
+    else document.documentElement.setAttribute('dir', 'ltr');
+
+    const rtlBtn = document.getElementById('rtl-toggle');
+    if (rtlBtn) {
+      rtlBtn.addEventListener('click', () => {
+        const currentDir = document.documentElement.getAttribute('dir');
+        setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
+      });
+    }
+    const mobileRtlBtn = document.getElementById('mobile-rtl-toggle');
+    if (mobileRtlBtn) {
+      mobileRtlBtn.addEventListener('click', () => {
+        const currentDir = document.documentElement.getAttribute('dir');
+        setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileToggle = document.getElementById('mobile-toggle');
+        if (mobileMenu && mobileMenu.classList.contains('open')) {
+          mobileMenu.classList.remove('open');
+          if (mobileToggle && mobileToggle.querySelector('i')) {
+            mobileToggle.querySelector('i').classList.remove('fa-times');
+            mobileToggle.querySelector('i').classList.add('fa-bars');
+          }
+        }
+      });
+    }
+
+    // Mobile menu
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        const icon = mobileToggle.querySelector('i');
+        if (mobileMenu.classList.contains('open')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+      mobileMenu.querySelectorAll('a:not(#mobile-rtl-toggle)').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          if (mobileToggle.querySelector('i')) {
+            mobileToggle.querySelector('i').classList.remove('fa-times');
+            mobileToggle.querySelector('i').classList.add('fa-bars');
+          }
+        });
+      });
+    }
+  });
+</script>
+</body>
+</html>

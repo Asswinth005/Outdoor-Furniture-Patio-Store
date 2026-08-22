@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="fav-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97A53"/>
+      <stop offset="100%" stop-color="#C4714A"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <rect width="64" height="64" rx="16" fill="url(#fav-bg)"/>
+  
+  <!-- Patio umbrella top -->
+  <path d="M 32 10 Q 14 26 12 28 C 18 26 24 28 32 24 C 40 28 46 26 52 28 Q 50 26 32 10 Z" fill="#FFFFFF"/>
+  <path d="M 32 10 L 22 26" stroke="#C4714A" stroke-width="1.2" fill="none"/>
+  <path d="M 32 10 L 32 24" stroke="#C4714A" stroke-width="1.2" fill="none"/>
+  <path d="M 32 10 L 42 26" stroke="#C4714A" stroke-width="1.2" fill="none"/>
+  
+  <!-- Umbrella pole -->
+  <line x1="32" y1="24" x2="32" y2="52" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Lounge chair left -->
+  <path d="M 12 40 L 24 44 L 26 52" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="16" y1="42" x2="14" y2="52" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Lounge chair right -->
+  <path d="M 52 40 L 40 44 L 38 52" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="48" y1="42" x2="50" y2="52" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Small leaf accent -->
+  <path d="M 32 6 Q 37 8 36 12 Q 32 10 32 6 Z" fill="#5B8C5A"/>
+</svg>
