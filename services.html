@@ -280,7 +280,7 @@
 <!-- ======== NAVIGATION (exact copy from reference) ======== -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 dark:bg-[#2E1F1A]/95 backdrop-blur-md border-b border-cream/40 dark:border-cream/10 shadow-sm">
   <div class="container mx-auto px-6">
-    <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
+    <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0 relative">
       <!-- Logo -->
       <a class='flex items-center gap-2 md:gap-3 group shrink-0' href='index.html'>
         <div class="w-9 h-9 md:w-10 md:h-10 bg-terracotta rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition duration-300 overflow-hidden">
@@ -302,50 +302,48 @@
         </div>
       </a>
 
-      <!-- Desktop nav + actions -->
-      <div class="flex items-center gap-3 lg:gap-4 xl:gap-8 ml-auto rtl:ml-0 rtl:mr-auto">
-        <div class="hidden lg:flex items-center gap-3 xl:gap-6">
-          <div class="dropdown-studio">
-            <button class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
-              Home <i class="fas fa-chevron-down text-xs ms-1"></i>
-            </button>
-            <div class="dropdown-studio-menu">
-              <a class="dropdown-item" href="index.html"> Home 1</a>
-              <a class="dropdown-item" href="home2.html"> Home 2</a>
-            </div>
+      <!-- Centered Desktop Navigation -->
+      <div class="hidden xl:flex items-center justify-center gap-6 absolute left-1/2 -translate-x-1/2">
+        <div class="dropdown-studio">
+          <button class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition flex items-center gap-1 py-2 whitespace-nowrap text-base">
+            Home <i class="fas fa-chevron-down text-xs ms-1"></i>
+          </button>
+          <div class="dropdown-studio-menu">
+            <a class="dropdown-item" href="index.html"> Home 1</a>
+            <a class="dropdown-item" href="home2.html"> Home 2</a>
           </div>
-          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="about.html">About</a>
-          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="products.html">Products</a>
-          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="materials.html">Materials</a>
-          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="gallery.html">Gallery</a>
-          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="custom.html">Custom &amp; Bulk</a>
-          <a class="nav-link text-terracotta font-medium transition whitespace-nowrap text-sm xl:text-base" href="services.html">Services</a>
-          <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-sm xl:text-base" href="contact.html">Contact</a>
         </div>
+        <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-base" href="about.html">About</a>
+        <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-base" href="products.html">Products</a>
+        <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-base" href="materials.html">Materials</a>
+        <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-base" href="gallery.html">Gallery</a>
+        <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-base" href="custom.html">Custom &amp; Bulk</a>
+        <a class="nav-link text-terracotta font-medium transition whitespace-nowrap text-base" href="services.html">Services</a>
+        <a class="nav-link text-[#2E1F1A] dark:text-cream hover:text-terracotta transition whitespace-nowrap text-base" href="contact.html">Contact</a>
+      </div>
 
-        <!-- Desktop actions -->
-        <div class="hidden lg:flex items-center gap-4 ms-2">
-          <a href="contact.html" class="btn-primary py-2 px-5 rounded-full text-sm font-medium inline-flex items-center gap-2 shadow-md hover:scale-105 transition">
-            <i class="fas fa-calendar-check"></i> Book Now
-          </a>
-          <button id="theme-toggle" class="w-10 h-10 rounded-full bg-terracotta/20 dark:bg-terracotta/20 text-terracotta hover:scale-110 transition flex items-center justify-center">
-            <i class="fas fa-moon dark:hidden"></i>
-            <i class="fas fa-sun hidden dark:inline"></i>
-          </button>
-          <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-terracotta/20 dark:bg-terracotta/20 text-terracotta hover:scale-110 transition flex items-center justify-center font-bold text-base">
-            ⇄
-          </button>
-        </div>
+      <!-- Desktop actions & Mobile toggle -->
+      <div class="flex items-center gap-3 xl:gap-4 ms-auto">
+        <a href="contact.html" class="hidden xl:inline-flex btn-primary py-2 px-5 rounded-full text-sm font-medium items-center gap-2 shadow-md hover:scale-105 transition">
+          <i class="fas fa-calendar-check"></i> Book Now
+        </a>
+        <button id="theme-toggle" class="hidden xl:flex w-10 h-10 rounded-full bg-terracotta/20 dark:bg-terracotta/20 text-terracotta hover:scale-110 transition flex items-center justify-center">
+          <i class="fas fa-moon dark:hidden"></i>
+          <i class="fas fa-sun hidden dark:inline"></i>
+        </button>
+        <button id="rtl-toggle" class="hidden xl:flex w-10 h-10 rounded-full bg-terracotta/20 dark:bg-terracotta/20 text-terracotta hover:scale-110 transition flex items-center justify-center font-bold text-base">
+          ⇄
+        </button>
 
         <!-- Mobile toggle -->
-        <button id="mobile-toggle" class="lg:hidden w-10 h-10 rounded-full bg-terracotta text-cream flex items-center justify-center shadow-md">
+        <button id="mobile-toggle" class="xl:hidden w-10 h-10 rounded-full bg-terracotta text-cream flex items-center justify-center shadow-md">
           <i class="fas fa-bars text-base"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="mobile-menu-studio lg:hidden">
+    <div id="mobile-menu" class="mobile-menu-studio xl:hidden">
       <div class="py-4 px-3 space-y-1">
         <div class="py-1">
           <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#2E1F1A] dark:text-cream hover:bg-cream/60 dark:hover:bg-cream/10 rounded-xl transition cursor-pointer">
